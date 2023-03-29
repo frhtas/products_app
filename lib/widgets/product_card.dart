@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:products_app/screens/product_detail_screen.dart';
+import 'package:go_router/go_router.dart';
 
 import '../models/product.dart';
 
@@ -17,11 +17,7 @@ class ProductCard extends StatelessWidget {
       margin: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ProductDetailScreen(productId: product.id),
-            ),
-          );
+          context.push("/product-detail/${product.id}");
         },
         child: Stack(
           children: [

@@ -1,32 +1,57 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:products_app/screens/last_checkout_screen.dart';
 import 'package:products_app/screens/main_screen.dart';
+import 'package:products_app/screens/product_detail_screen.dart';
 import 'package:products_app/util/shared_prefs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefs.initialize();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  // GoRouter configuration
+  final _router = GoRouter(
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const MainScreen(),
+      ),
+      GoRoute(
+        path: '/product-detail/:id',
+        builder: (context, state) => ProductDetailScreen(
+          productId: int.parse(state.params["id"]!),
+        ),
+      ),
+      GoRoute(
+        path: '/last-checkout',
+        builder: (context, state) => const LastCheckoutScreen(),
+      ),
+    ],
+  );
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
       home: AnimatedSplashScreen(
         splash: 'assets/images/splash.png',
         backgroundColor: Colors.blueGrey,
         splashIconSize: 300,
-        nextScreen: const MainScreen(),
+        nextScreen: MaterialApp.router(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blueGrey,
+          ),
+          routerConfig: _router,
+        ),
         splashTransition: SplashTransition.rotationTransition,
       ),
     );

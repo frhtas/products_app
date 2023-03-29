@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:products_app/screens/product_detail_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:products_app/widgets/empty_state_widget.dart';
 
 import '../models/cart.dart';
@@ -64,12 +64,7 @@ class _LastCheckoutScreenState extends State<LastCheckoutScreen> {
                           ),
                           child: ListTile(
                             onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProductDetailScreen(productId: cart.id),
-                                ),
-                              );
+                              context.push("/product-detail/${cart.id}");
                             },
                             minVerticalPadding: 16,
                             leading: Hero(

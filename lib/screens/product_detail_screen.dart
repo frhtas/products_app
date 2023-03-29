@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:products_app/models/cart.dart';
 import 'package:products_app/util/services.dart';
 import 'package:products_app/util/shared_prefs.dart';
@@ -68,7 +69,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               padding: const EdgeInsets.only(top: 16.0),
               child: FloatingActionButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  context.pop();
                 },
                 mini: true,
                 child: const Icon(Icons.arrow_back),

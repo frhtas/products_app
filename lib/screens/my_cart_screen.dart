@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:products_app/screens/last_checkout_screen.dart';
-import 'package:products_app/screens/product_detail_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:products_app/util/common.dart';
 import 'package:products_app/util/shared_prefs.dart';
 import 'package:products_app/widgets/add_remove_widget.dart';
@@ -80,11 +79,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const LastCheckoutScreen(),
-                ),
-              );
+              context.push("/last-checkout");
             },
             tooltip: "Show Last Checkout",
             icon: const Icon(Icons.shopping_cart_checkout_rounded),
@@ -115,13 +110,8 @@ class _MyCartScreenState extends State<MyCartScreen> {
                           ),
                           child: ListTile(
                             onTap: () {
-                              Navigator.of(context)
-                                  .push(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProductDetailScreen(productId: cart.id),
-                                ),
-                              )
+                              context
+                                  .push("/product-detail/${cart.id}")
                                   .then((value) {
                                 getCartItems();
                               });
