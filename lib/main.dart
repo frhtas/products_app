@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:products_app/screens/main_screen.dart';
 import 'package:products_app/util/shared_prefs.dart';
@@ -21,7 +22,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const MainScreen(),
+      home: AnimatedSplashScreen(
+        splash: 'assets/images/splash.png',
+        backgroundColor: Colors.blueGrey,
+        splashIconSize: 300,
+        nextScreen: const MainScreen(),
+        splashTransition: SplashTransition.rotationTransition,
+      ),
     );
   }
 }
