@@ -4,6 +4,7 @@ import 'package:products_app/models/cart.dart';
 import 'package:products_app/util/services.dart';
 import 'package:products_app/util/shared_prefs.dart';
 import 'package:products_app/widgets/add_remove_widget.dart';
+import 'package:products_app/widgets/my_progress_indicator.dart';
 
 import '../models/product.dart';
 
@@ -222,7 +223,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           )
         : Container(
             color: Colors.white,
-            child: const Center(child: CircularProgressIndicator()),
+            child: const MyProgressIndicator(),
           );
   }
 }

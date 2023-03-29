@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:products_app/util/services.dart';
+import 'package:products_app/widgets/my_progress_indicator.dart';
 import 'package:products_app/widgets/product_card.dart';
 
 import '../models/product.dart';
@@ -50,6 +51,6 @@ class _ProductListState extends State<ProductList> {
               return ProductCard(product: products[index]);
             },
           )
-        : const Center(child: CircularProgressIndicator());
+        : const MyProgressIndicator();
   }
 }

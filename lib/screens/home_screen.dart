@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:products_app/util/services.dart';
+import 'package:products_app/widgets/my_progress_indicator.dart';
 import 'package:products_app/widgets/product_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -63,6 +64,6 @@ class _HomeScreenState extends State<HomeScreen>
                   .toList(),
             ),
           )
-        : const Center(child: CircularProgressIndicator());
+        : const MyProgressIndicator();
   }
 }
