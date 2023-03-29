@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:products_app/util/common.dart';
 
 class AddRemoveWidget extends StatelessWidget {
   final int quantity;
@@ -23,7 +24,10 @@ class AddRemoveWidget extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
-          onTap: onRemove,
+          onTap: () {
+            onRemove();
+            Common.showSnackbar(context, "Removed from the cart!");
+          },
           child: Container(
             height: buttonSize,
             width: buttonSize,
@@ -49,7 +53,10 @@ class AddRemoveWidget extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         GestureDetector(
-          onTap: onAdd,
+          onTap: () {
+            onAdd();
+            Common.showSnackbar(context, "Added to the cart!");
+          },
           child: Container(
             height: buttonSize,
             width: buttonSize,

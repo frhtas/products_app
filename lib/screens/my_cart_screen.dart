@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:products_app/screens/last_checkout_screen.dart';
 import 'package:products_app/screens/product_detail_screen.dart';
+import 'package:products_app/util/common.dart';
 import 'package:products_app/util/shared_prefs.dart';
 import 'package:products_app/widgets/add_remove_widget.dart';
 import 'package:products_app/widgets/empty_state_widget.dart';
@@ -61,6 +62,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                 SharedPrefs.setCartItems(cartItems);
               });
               Navigator.of(context).pop();
+              Common.showSnackbar(context, "Removed all from the cart!");
             },
             child: const Text('TAMAM'),
           ),
@@ -226,6 +228,7 @@ class _MyCartScreenState extends State<MyCartScreen> {
                               SharedPrefs.setCartItems(cartItems);
                               SharedPrefs.setCheckoutItems(checkoutItems);
                             });
+                            Common.showSnackbar(context, "Checkout the cart!");
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Theme.of(context).primaryColor,
