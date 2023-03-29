@@ -30,6 +30,7 @@ class _ProductListState extends State<ProductList> {
       Services.getProductsByCategory(widget.category).then((value) {
         setState(() {
           products = value;
+          // products.sort((a, b) => b.rating.compareTo(a.rating));
           print(products);
         });
       });

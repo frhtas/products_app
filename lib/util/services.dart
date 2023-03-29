@@ -18,8 +18,14 @@ class Services {
   }
 
   static Future<List<Product>> getProductsByCategory(String category) async {
-    final response =
-        await http.get(Uri.parse("${baseUrl}products/category/$category"));
+    http.Response response;
+    if (category == "all-products") {
+      response = await http.get(Uri.parse("${baseUrl}products"));
+    } else {
+      response =
+          await http.get(Uri.parse("${baseUrl}products/category/$category"));
+    }
+
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       return data["products"].map<Product>((e) => Product.fromJson(e)).toList();

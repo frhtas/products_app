@@ -26,9 +26,10 @@ class _HomeScreenState extends State<HomeScreen>
     try {
       Services.getCategories().then((value) {
         setState(() {
-          categories = value;
+          categories = ["all-products"];
+          categories.addAll(value);
+          print("categories: $categories");
           tabController = TabController(length: categories.length, vsync: this);
-          print(categories);
         });
       });
     } catch (e) {
