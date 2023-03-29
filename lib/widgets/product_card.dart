@@ -42,11 +42,14 @@ class ProductCard extends StatelessWidget {
                         topLeft: Radius.circular(12.0),
                         topRight: Radius.circular(12.0),
                       ),
-                      child: Image.network(
-                        product.thumbnail,
-                        height: 100,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
+                      child: Hero(
+                        tag: product.thumbnail,
+                        child: Image.network(
+                          product.thumbnail,
+                          height: 100,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 12),

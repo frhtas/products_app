@@ -76,11 +76,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
             body: Column(
               children: [
-                Image.network(
-                  product!.images[0],
-                  fit: BoxFit.cover,
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  width: MediaQuery.of(context).size.width,
+                Hero(
+                  tag: product!.thumbnail,
+                  child: Image.network(
+                    product!.thumbnail,
+                    fit: BoxFit.cover,
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    width: MediaQuery.of(context).size.width,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 RatingBar.builder(

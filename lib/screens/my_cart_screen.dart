@@ -125,11 +125,14 @@ class _MyCartScreenState extends State<MyCartScreen> {
                               });
                             },
                             minVerticalPadding: 16,
-                            leading: Image.network(
-                              cart.img,
-                              width: 80,
-                              height: 80,
-                              fit: BoxFit.cover,
+                            leading: Hero(
+                              tag: cart.img,
+                              child: Image.network(
+                                cart.img,
+                                width: 80,
+                                height: 80,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             title: Text(
                               cart.title,
